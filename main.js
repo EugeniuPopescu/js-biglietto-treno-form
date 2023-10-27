@@ -23,8 +23,11 @@ btnGenerate.addEventListener('click', function() {
 
     // controllo se non inserisco dati
     if ( fName.value==="" && !Number.isFinite(km) ) {
+        console.log('ciao');
         // outName.innerHTML = `Something went wrong`;
         alert('Something went wrong');
+
+        
 
         // partono i controlli
     } else {
@@ -39,12 +42,12 @@ btnGenerate.addEventListener('click', function() {
         distance = `Hai inserito una distanza percorribile dai nostri treni`;
         
         // prezzo finale
-        if ( age.value==='Under 18' ) {
+        if ( age.value=='Under 18' ) {
             sale = (price / 100) * 20;
             finalPrice = price - sale;
             saleMessage = `Sconto under 18 (${price}€ - ${sale.toFixed(2)}€ (sconto))`;
             
-        } else if( age.value==='Over 65' ) {
+        } else if( age.value=='Over 65' ) {
             sale = (price / 100) * 40;
             finalPrice = price - sale;
             saleMessage = `Sconto over 65 (${price}€ - ${sale.toFixed(2)}€ (sconto))`;
@@ -53,8 +56,9 @@ btnGenerate.addEventListener('click', function() {
             finalPrice = price;
             saleMessage = `Biglietto Standard`;
         }
+
+        console.log(finalPrice);
         outName.innerHTML = fName.value.toUpperCase();
-        document.getElementById('age').innerHTML = `Validazione età: ${strangeAge} (${age} anni)`;
         outSale.innerHTML = `${saleMessage}`;
         outCostoBiglietto.innerHTML = `${finalPrice.toFixed(2)}`;
     }
