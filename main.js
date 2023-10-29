@@ -1,5 +1,5 @@
-const fName = document.querySelector('#name');
-const km = parseInt(document.querySelector('#km'));
+const inputName = document.querySelector('#name');
+const inputKm = parseInt(document.querySelector('#inputKm'));
 const age = document.querySelector('#age');
 
 const btnGenerate = document.querySelector('#generate');
@@ -11,7 +11,7 @@ const outCarroza = document.querySelector('#carrozza');
 const outCodice = document.querySelector('#codice');
 const outCostoBiglietto = document.querySelector('#costoBiglietto');
 
-const price = km * 0.21
+let price = inputKm * 0.21
 let distance;
 let strangeAge;
 let finalPrice;
@@ -19,28 +19,19 @@ let sale;
 let saleMessage;
 
 btnGenerate.addEventListener('click', function() {
-    // outName.innerHTML = fName.value;
+    // outName.innerHTML = inputName.value;
 
     // controllo se non inserisco dati
-    if ( fName.value==="" && !Number.isFinite(km) ) {
+    if ( inputName.value=="" && !Number.isFinite(inputKm) ) {
         console.log('ciao');
         // outName.innerHTML = `Something went wrong`;
         alert('Something went wrong');
 
         
+        console.log(finalPrice);
 
         // partono i controlli
-    } else {
-        // controllo sulla distanza
-    if ( km > 1000 ) {
-        distance = `Prendi un aereo baby`;
-
-    } else if ( km < 5 ) {
-        distance = `Camminaaaaaa, pochi km, devi fare almeno 5 km`; 
-
-    } else {
-        distance = `Hai inserito una distanza percorribile dai nostri treni`;
-        
+    } else {        
         // prezzo finale
         if ( age.value=='Under 18' ) {
             sale = (price / 100) * 20;
@@ -57,10 +48,10 @@ btnGenerate.addEventListener('click', function() {
             saleMessage = `Biglietto Standard`;
         }
 
-        console.log(finalPrice);
-        outName.innerHTML = fName.value.toUpperCase();
+        outName.innerHTML = inputName.value.toUpperCase();
         outSale.innerHTML = `${saleMessage}`;
+        outCarroza.innerHTML = Math.floor(Math.random() * 9) + 1;
+        outCodice.innerHTML = Math.floor(Math.random() * 99999) + 1;
         outCostoBiglietto.innerHTML = `${finalPrice.toFixed(2)}`;
-    }
     }
 });
