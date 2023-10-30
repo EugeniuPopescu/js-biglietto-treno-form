@@ -23,6 +23,7 @@ SELECTORS.btnGenerate.addEventListener('click', function() {
     // outName.innerHTML = inputName.value;
     // var inputKmValue = parseInt(inputKm.value);
     let price = parseInt(SELECTORS.inputKm.value) * 0.21;
+    let ticket = document.querySelector('.ticket');
 
     // controllo se non inserisco dati
     if (SELECTORS.inputName.value === "" && !Number.isFinite(SELECTORS.inputKm)) {
@@ -31,7 +32,7 @@ SELECTORS.btnGenerate.addEventListener('click', function() {
         // partono i controlli
     } else {   
         // var currentAge = age && age.value? age.value: 'value null'; 
-        
+        ticket.classList.remove('d-none');
         // controllo distanza
         if(SELECTORS.inputKm.value > 1000) {
             SELECTORS.outCostoBiglietto.innerHTML = `ERROR non superiamo i 1000Km`;
